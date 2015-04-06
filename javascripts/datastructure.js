@@ -29,3 +29,29 @@ Queue.prototype.dequeue = function() {
 	this.size -= 1;
 	return temp;
 }
+
+var Process = function() {
+	this.name = null;
+	this.burst_time = null;
+	this.arival_time = null;
+	this.priority = null;
+}
+
+Process.prototype.name = function(name) {
+	this.name = name;
+}
+
+
+Process.prototype.burst_time = function(burst_time) {
+	this.burst_time = burst_time;
+}
+
+
+Process.prototype.arival_time = function(arival_time) {
+	this.arival_time = arival_time;
+}
+
+
+Process.prototype.name = function(arival_time) {
+	this.arival_time = arival_time;
+}
