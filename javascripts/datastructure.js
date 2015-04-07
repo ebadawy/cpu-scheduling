@@ -145,7 +145,8 @@ ProcessList.prototype = {
 				node = node.next;
 			}
 			node = this.head;
-			node.data.execution_time = node.data.arival_time;
+			if(node) 
+				node.data.execution_time = node.data.arival_time;
 		} 
 	}
 };
