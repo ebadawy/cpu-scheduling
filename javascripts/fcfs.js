@@ -24,7 +24,7 @@ function fcfs() {
 		});
 		
 	//sort process acording to there arival time & build the chart
-	process_list.sort();
+	process_list.sort('arival_time');
 	build_chart(process_list);
 
 }

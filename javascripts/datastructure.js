@@ -82,8 +82,9 @@ ProcessList.prototype = {
 		node2.data = tmp;
 	},
 
-	//sort processes acordding to there arival time using bubble sort
-	sort: function() {
+	//sort processes acordding to there attr given in
+	//passed 'type' param using bubble sort
+	sort: function(type) {
 		var node = this.head;
 		var swap = true;
 		while(swap){
@@ -100,10 +101,20 @@ ProcessList.prototype = {
 					else
 						node.next.data.execution_time = node.next.data.arival_time;
 
-					//check if the current process came after its next
-					if(node.data.arival_time > node.next.data.arival_time) {
-						this.swap(node, node.next);
-						swap = true;
+					switch(type) {
+						case "arival_time" :
+							//check if the current process came after its next
+							if(node.data.arival_time > node.next.data.arival_time) {
+								this.swap(node, node.next);
+								swap = true;
+							}
+							break;
+						case "burst_time":
+							if(node.data.burst_time > node.next.data.burst_time) {
+								this.swap(node, node.next);
+								swap = true;
+							}
+							break;
 					}
 				}
 				node = node.next;
