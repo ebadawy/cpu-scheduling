@@ -76,6 +76,28 @@ ProcessList.prototype = {
 
 		return node;
 	},
+	remove: function(node) {
+		//if it's the head node assign its next to be the head node
+		if(this.head.data == node.data) {
+			this.head = this.head.next;
+			this.length--;
+			return this.head;
+		}
+		else {
+			var current_node = this.head;
+			while(current_node.next) {
+				if(current_node.next.data == node.data) {
+					current_node.next = node.next;
+					node.next = null;
+					this.length--;
+					return current_node;
+				}
+				current_node = current_node.next;
+			}
+		}
+		return false;
+	},
+
 	swap: function(node1, node2) {
 		var tmp = node1.data;
 		node1.data = node2.data;
