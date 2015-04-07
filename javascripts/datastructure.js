@@ -54,16 +54,32 @@ Process.prototype = {
 };
 
 
-Process.prototype.burst_time = function(burst_time) {
-	this.burst_time = burst_time;
+var ProcessList = function() {
+	this.head = null;
+	this.tail = null;
+	this.length = 0;
 }
 
+ProcessList.prototype = {
+	add: function(data) {
+		var node = new Node(data);
 
-Process.prototype.arival_time = function(arival_time) {
-	this.arival_time = arival_time;
-}
+		if(!this.head)
+			this.head = node;
+		else {
+			var current_node = this.head;
+			while(current_node.next) 
+				current_node = current_node.next;
+			current_node.next = node;
+		}
+		this.length++;
+
+		return node;
+	},
+	swap: function(node1, node2) {
+		var tmp = node1.data;
+		node1.data = node2.data;
+		node2.data = tmp;
+	},
 
 
-Process.prototype.name = function(arival_time) {
-	this.arival_time = arival_time;
-}
