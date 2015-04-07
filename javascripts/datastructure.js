@@ -107,8 +107,8 @@ ProcessList.prototype = {
 		return this.head == null;
 	},
 
-	//sort processes acordding to there attr given in
-	//passed 'type' param using bubble sort
+	//sort processes according to there attr given in
+	//the passed param 'type' using bubble sort
 	sort: function(type) {
 		var node = this.head;
 		var swap = true;

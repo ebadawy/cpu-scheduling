@@ -10,15 +10,14 @@ function sjf() {
 
 		  var current_process = new Process(process_name, arival_time, burst_time);
 		  process_list.add(current_process);
-		});
+	});
 		
 	build_chart(non_preemptive(process_list));
 }
 
 function non_preemptive(process_list) {
 	var ready_list = new ProcessList();
-	//sort process acording to there arival time & build the chart
-	// list.sort('arival_time');
+	//sort process according to there burst time
 	process_list.sort('burst_time');
 	var current_time = 0;
 	var current_process = process_list.head;
