@@ -56,28 +56,73 @@
           <span class="credits left">Project maintained by <a href="https://github.com/ehab93">ehab93</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
+        <div class="container-fluid">
 
-        <h3>Scheduler Type</h3>
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">FCFS</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SJF</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Priority</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Round Robin</a></li>
-          </ul>
+          <div class="row">
+          <!-- Scheduler Type & the dropdown menu -->
+            <div class="col-md-4">
+              <h3>Scheduler Type</h3>
+            </div>
+            <div class="col-md-2">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  FCFS
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">FCFS</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SJF</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Priority</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Round Robin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- end of Scheduler Type & the dropdown menu -->
+          
+          <!-- Processes # -->
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-md-4">
+              <h3>Processes No.</h3>
+            </div>
+            <div class="col-xs-2">
+              <input type="text" class="form-control processes-number">
+            </div>
+          </div>
+          <!-- end of Processes # -->
+          </br>
+          <div id="run-div">
+            <button type="button"class="btn btn-default run" >
+              <span class="glyphicon glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Run
+            </button>
+          </div>
+          </br>
+          </br>
+
+          <div class = "inputs-container">
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-xs-4">
+                <input type="text" class="form-control process-name" placeholder="Process Name">
+              </div>
+              <div class="col-xs-3">
+                <input type="text" class="form-control arrival-time" placeholder="Arival Time">
+              </div>
+              <div class="col-xs-3">
+                <input type="text" class="form-control burst-time" placeholder="Burst Time">
+              </div>
+            </div>
+          </div>
+
+
+        </br>
+        </br>
+        </br>
+        </br>
+        
+        <ul class="chart">
+        </ul>
+          
         </div>
-<!-- 
-        <select>
-          <option value="fcfs">FCFS</option>
-          <option value="sjf">SJF</option>
-          <option value="priority">Priority</option>
-          <option value="rr">Round Robin</option>
-        </select>
-  -->
     </div>
   </body>
 </html>
