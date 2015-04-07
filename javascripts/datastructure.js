@@ -38,9 +38,20 @@ var Process = function(name, arival_time, burst_time, priority) {
 	this.execution_time = arival_time;
 }
 
-Process.prototype.name = function(name) {
-	this.name = name;
-}
+Process.prototype = {
+	name: function(name) {
+		this.name = name;
+	},
+	burst_time: function(burst_time) {
+		this.burst_time = burst_time;
+	},
+	arival_time: function(arival_time) {
+		this.arival_time = arival_time;
+	},
+	priority: function(priority) {
+		this.priority = priority;
+	}
+};
 
 
 Process.prototype.burst_time = function(burst_time) {
