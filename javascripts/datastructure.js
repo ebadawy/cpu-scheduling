@@ -140,6 +140,12 @@ ProcessList.prototype = {
 								swap = true;
 							}
 							break;
+							case "priority":
+							if(node.data.priority > node.next.data.priority) {
+								this.swap(node, node.next);
+								swap = true;
+							}
+							break;
 					}
 				}
 				node = node.next;
