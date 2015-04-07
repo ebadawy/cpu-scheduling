@@ -93,9 +93,13 @@ ProcessList.prototype = {
 				if(node.next){
 
 					//update next process execution time to be after the current one
-					node.next.data.execution_time = node.data.execution_time+
+					var exe_time = node.data.execution_time+node.data.burst_time;
+					if(exe_time >= node.next.data.arival_time)
+						node.next.data.execution_time = node.data.execution_time+
 												node.data.burst_time;
-			
+					else
+						node.next.data.execution_time = node.next.data.arival_time;
+
 					//check if the current process came after its next
 					if(node.data.arival_time > node.next.data.arival_time) {
 						this.swap(node, node.next);
