@@ -19,22 +19,23 @@ Queue.prototype.enqueue = function(data) {
 			n = n.next;
 		n.next = node;
 	}
-	this.size += 1;
+	this.size++;
 	return node;
 }
 
 Queue.prototype.dequeue = function() {
 	temp = this.first;
 	this.first = this.first.next;
-	this.size -= 1;
+	this.size--;
 	return temp;
 }
 
-var Process = function() {
-	this.name = null;
-	this.burst_time = null;
-	this.arival_time = null;
-	this.priority = null;
+var Process = function(name, arival_time, burst_time, priority) {
+	this.name = name || "";
+	this.arival_time =  arival_time || 0;
+	this.burst_time = burst_time || 1;
+	this.priority = priority || 0;
+	this.execution_time = arival_time;
 }
 
 Process.prototype.name = function(name) {
