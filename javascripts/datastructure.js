@@ -103,6 +103,9 @@ ProcessList.prototype = {
 		node1.data = node2.data;
 		node2.data = tmp;
 	},
+	is_empty: function() {
+		return this.head == null;
+	},
 
 	//sort processes acordding to there attr given in
 	//passed 'type' param using bubble sort
