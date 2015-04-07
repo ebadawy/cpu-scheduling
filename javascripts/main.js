@@ -25,5 +25,8 @@ $('#run-div').delegate('.btn.run', 'click', function() {
 		case 'FCFS': 
 			fcfs(); 
 			break;
+		case 'SJF': 
+			sjf(); 
+			break;
 	}
 });
