@@ -36,9 +36,9 @@ function process_chart(process) {
 	var burst_time = parseInt(process.burst_time);
 
 	console.log(process.execution_time+1);
-	return '<li class="current" title="'+name+' '+ execution_time +
-	' : '+(burst_time+execution_time)+'"><span class="bar" data-number="'+burst_time+
-	'"></span><span class="number">'+burst_time+'</span></li>';
+	return '<li class="title" title="">'+name+' '+ execution_time +
+	' : '+(burst_time+execution_time)+'</li><li class="current" title="'+burst_time+'"><span class="bar" data-number="'+burst_time+
+	'"></span><span class="number"></span></li>';
 }
 
 function build_chart(process_list) {
