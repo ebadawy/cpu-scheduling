@@ -5,6 +5,9 @@ var scheduler_type;
 var options = '<input type="radio" name="options" value="preemptive" checked>'
 			 +' preemptive<input type="radio" name="options" value="nonpreemptive"style='
 			 +'"margin-left: 34px;"> Non-preemptive';
+var time_quantum_txtfield = '<div class="col-xs-3"><input type="text"'+
+							'class="form-control  time-quantum"'+
+							'placeholder="Time Quantum"></div>';
 
 //update dropdown menu text when clicking on one of its items
 $('ul.scheduler-type li').click(function() {
@@ -23,7 +26,8 @@ $('ul.scheduler-type li').click(function() {
 	    	$(".options input[name='options']:radio").change(function() {
 	    		sjf();
 			});
-	    }
+	    } else if( scheduler_type == "Round Robin") 
+	    	$options_form.html(time_quantum_txtfield);   
 });
 
 
@@ -50,5 +54,6 @@ $('#run-div').delegate('.btn.run', 'click', function() {
 		case 'FCFS': fcfs(); break;
 		case 'SJF' : sjf();  break;
 		case 'Priority': priority(); break;
+		case 'Round Robin': round_robin(); break;
 	}
 });
