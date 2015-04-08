@@ -15,12 +15,12 @@ $(".processes-number").keydown(function(e){
     if(keycode == '13'){
     	//clear all exisiting process and generate a new ones
         $inputs_container.empty();
-        if(scheduler_type == "FCFS" || scheduler_type == "SJF")
+        if(scheduler_type == "Priority")
 	        for(var i = 0; i < $(this).val(); i++) 
-	        	$inputs_container.append(fcfs_div);
+	        	$inputs_container.append(priority_div);
 	    else
 	    	for(var i = 0; i < $(this).val(); i++) 
-	        	$inputs_container.append(priority_div);
+	        	$inputs_container.append(fcfs_div);
     }
 });
 
