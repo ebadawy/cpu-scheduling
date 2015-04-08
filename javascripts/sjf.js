@@ -16,26 +16,13 @@ function sjf() {
 		  process_list.add(current_process);
 	});
 
-	// var process_name = "A";
-	// var arival_time = 0;
-	// var burst_time = 1;
-	// var p1 = new Process(process_name, arival_time, burst_time);
-	// process_list.add(p1);
-	// console.log(p1);
+	//get the selected radio_btn value
+	var option_val = $(".options input[type='radio']:checked").val();
+	if(option_val == 'preemtive')
+		build_chart(preemptive(process_list));
+	else
+		build_chart(non_preemptive(process_list));
 
-	// process_name = "B";
-	// arival_time = 3;
-	// burst_time = 3;
-	// var p2 = new Process(process_name, arival_time, burst_time);
-	// process_list.add(p2);
-
-	// process_name = "C";
-	// arival_time = 2;
-	// burst_time = 5;
-	// var p3 = new Process(process_name, arival_time, burst_time);
-	// process_list.add(p3);
-		
-	build_chart(preemptive(process_list));
 }
 
 function non_preemptive(process_list) {

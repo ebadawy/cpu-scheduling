@@ -1,11 +1,31 @@
 var $scheduler_type_btn = $('button.scheduler-type');
+var $options_form = $('.options');
+var $form_radiobtns = $(".options input[type='radio']:checked");
 var scheduler_type;
+var options = '<input type="radio" name="options" value="preemtive" checked>'
+			 +' Preemtive<input type="radio" name="options" value="nonpreemtive"style='
+			 +'"margin-left: 34px;"> Non-Preemtive';
 
 //update dropdown menu text when clicking on one of its items
 $('ul.scheduler-type li').click(function() {
-	var html = $(this).text().trim()+' <span class="caret"></span>';
+	scheduler_type = $(this).text().trim();
+	var html = scheduler_type+' <span class="caret"></span>';
 	$scheduler_type_btn.html(html);
+
+	$options_form.empty();
+	    if(scheduler_type == "Priority") {
+	    	$options_form.html(options);    	
+	    	$(".options input[name='options']:radio").change(function() {
+				priority();
+			});
+	    } else if( scheduler_type == "SJF") {
+	    	$options_form.html(options);    	
+	    	$(".options input[name='options']:radio").change(function() {
+	    		sjf();
+			});
+	    }
 });
+
 
 // update inputs numbers to matche with processes numbers
 $(".processes-number").keydown(function(e){
