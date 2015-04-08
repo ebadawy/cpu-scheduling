@@ -34,10 +34,10 @@ function round_robin() {
 			current_process = current_process.next;
 		}
 
-		//if request queue is not empty dequeu the firt process and at it
-		//to the ready list, if its burst time is less than time quantum
-		//increment the current time by it burts time or increment the 
-		//current time my time quantem and decrement the process burst time
+		//if request queue is not empty dequeue the firts process and add it
+		//to ready list, if its burst time is less than time quantum
+		//increment the current time by it burst time or increment the 
+		//current time by time quantem and decrement the process burst time
 		//by time quantum and enqueu it to request queue after checking
 		//for any other process that's ready to enter the request queue
 		if(!request_queue.is_empty()) {
