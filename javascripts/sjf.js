@@ -19,16 +19,23 @@ function sjf() {
 	//get the selected radio_btn value
 	var option_val = $(".options input[type='radio']:checked").val();
 	if(option_val == 'preemptive')
-		build_chart(preemptive(process_list));
+		build_chart(preemptive(process_list, 'sjf'));
 	else
-		build_chart(non_preemptive(process_list));
+		build_chart(non_preemptive(process_list, 'sjf'));
 
 }
 
-function non_preemptive(process_list) {
+function non_preemptive(process_list, scheduler_type) {
 	var ready_list = new ProcessList();
-	//sort process according to there burst time
-	process_list.sort('burst_time');
+	
+
+	//sort process according to there burst time/priority
+	if(scheduler_type === 'sjf')
+		process_list.sort('burst_time');
+	else 
+		process_list.sort('priority');
+	
+
 	var current_time = 0;
 	var current_process = process_list.head;
 	var incr_current_time = true;
@@ -59,12 +66,15 @@ function non_preemptive(process_list) {
 //add it to read_list and with burst_time 1 and decrement its burst_time, the process_added
 //will be true, do this till no process is found then merge duplicated process that came
 //after each other
-function preemptive(process_list) {
+function preemptive(process_list, scheduler_type) {
 	var ready_list = new ProcessList();
-	console.log(process_list);
 
-	//sort process according to there burst time
-	process_list.sort('burst_time');
+	//sort process according to there burst time/priority
+	if(scheduler_type === 'sjf')
+		process_list.sort('burst_time');
+	else
+		process_list.sort('priority');
+
 	var current_time = 0;
 	var current_process = process_list.head;
 	var tmp_process;
