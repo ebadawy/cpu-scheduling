@@ -98,6 +98,27 @@ ProcessList.prototype = {
 		return false;
 	},
 
+	//merge duplicated processes that came after each other
+	merge: function() {
+		var duplication_found = true;
+		var current_node;
+		while(duplication_found) {
+			current_node = this.head;
+			duplication_found = false;
+			while(current_node.next){
+				if(current_node.data.name === current_node.next.data.name){
+					current_node.data.burst_time += current_node.next.data.burst_time;
+					this.remove(current_node.next);
+					duplication_found = true;
+					//if the removed node was the last one break the loop
+					if(!this.next)
+						break;
+				}
+				current_node = current_node.next;
+			}
+		}
+		return this;
+	},
 	swap: function(node1, node2) {
 		var tmp = node1.data;
 		node1.data = node2.data;
