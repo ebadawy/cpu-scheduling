@@ -30,6 +30,10 @@ Queue.prototype.dequeue = function() {
 	return temp;
 }
 
+Queue.prototype.is_empty = function() {
+	return this.size < 1;
+}
+
 var Process = function(name, arival_time, burst_time, priority) {
 	this.name = name || "";
 	this.arival_time =  arival_time || 0;
