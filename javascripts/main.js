@@ -1,14 +1,3 @@
-var $scheduler_type_btn = $('button.scheduler-type');
-var $options_form = $('.options');
-var $form_radiobtns = $(".options input[type='radio']:checked");
-var scheduler_type;
-var options = '<input type="radio" name="options" value="preemptive" checked>'
-			 +' preemptive<input type="radio" name="options" value="nonpreemptive"style='
-			 +'"margin-left: 34px;"> Non-preemptive';
-var time_quantum_txtfield = '<div class="col-xs-3"><input type="text"'+
-							'class="form-control  time-quantum"'+
-							'placeholder="Time Quantum"></div>';
-
 //update dropdown menu text when clicking on one of its items
 $('ul.scheduler-type li').click(function() {
 	scheduler_type = $(this).text().trim();
