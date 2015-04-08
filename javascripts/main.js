@@ -2,9 +2,9 @@ var $scheduler_type_btn = $('button.scheduler-type');
 var $options_form = $('.options');
 var $form_radiobtns = $(".options input[type='radio']:checked");
 var scheduler_type;
-var options = '<input type="radio" name="options" value="preemtive" checked>'
-			 +' Preemtive<input type="radio" name="options" value="nonpreemtive"style='
-			 +'"margin-left: 34px;"> Non-Preemtive';
+var options = '<input type="radio" name="options" value="preemptive" checked>'
+			 +' preemptive<input type="radio" name="options" value="nonpreemptive"style='
+			 +'"margin-left: 34px;"> Non-preemptive';
 
 //update dropdown menu text when clicking on one of its items
 $('ul.scheduler-type li').click(function() {

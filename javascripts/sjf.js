@@ -18,7 +18,7 @@ function sjf() {
 
 	//get the selected radio_btn value
 	var option_val = $(".options input[type='radio']:checked").val();
-	if(option_val == 'preemtive')
+	if(option_val == 'preemptive')
 		build_chart(preemptive(process_list));
 	else
 		build_chart(non_preemptive(process_list));
