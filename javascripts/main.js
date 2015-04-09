@@ -21,11 +21,11 @@ $('ul.scheduler-type li').click(function() {
 
 
 // update inputs numbers to matche with processes numbers
-$(".processes-number").keydown(function(e){
-    var keycode = (event.keyCode ? event.keyCode : event.which);
+$(".processes-number").bind('keypress', function(e){
+	    // var keycode = (event.keyCode ? event.keyCode : event.which);}
     scheduler_type = $scheduler_type_btn.text().trim();
     // check if the pressed key is 'enter'
-    if(keycode == '13'){
+    if(e.keyCode == '13'){
     	//clear all exisiting process and generate a new ones
         $inputs_container.empty();
         if(scheduler_type == "Priority")
