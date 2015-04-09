@@ -39,7 +39,9 @@ var Process = function(name, arival_time, burst_time, priority) {
 	this.arival_time =  arival_time || 0;
 	this.burst_time = burst_time || 1;
 	this.priority = priority || 0;
-	this.execution_time = arival_time;
+	this.execution_time = this.arival_time;
+	this.finishing_time = this.arival_time;
+	this.turn_around_time = this.finishing_time - this.arival_time;
 }
 
 Process.prototype = {
@@ -132,6 +134,40 @@ ProcessList.prototype = {
 		return this.head == null;
 	},
 
+	//get the turnaround time by subtracting finishing time from arrival time
+	//and then get the wating time by subtraction turnaround time from burst time
+	avg_turn_around_and_wating_time: function() {
+		var current_process = this.head;
+		var total_turn_around_time = 0;
+		var total_wating__time = 0;
+		var turn_around_map = {};
+		var burst_time_map = {};
+		while(current_process) {
+			current_process.data.finishing_time = 
+			current_process.data.burst_time + 
+			current_process.data.execution_time;
+			current_process.data.turn_around_time = 
+			current_process.data.finishing_time - 
+			current_process.data.arival_time;
+			turn_around_map[current_process.data.name] = 
+			current_process.data.turn_around_time
+			if(current_process.data.name in burst_time_map)
+				burst_time_map[current_process.data.name] += current_process.data.burst_time;
+			else
+				burst_time_map[current_process.data.name] = current_process.data.burst_time;
+
+			current_process = current_process.next;
+		}
+		var p;
+		var len = 0;
+		for(p in turn_around_map) {
+			total_turn_around_time += turn_around_map[p];
+			total_wating__time += turn_around_map[p] - burst_time_map[p];
+			len++;
+		}
+		return [(total_wating__time/len).toFixed(2),
+			(total_turn_around_time/len).toFixed(2)];
+	},
 	//sort processes according to there attr given in
 	//the passed param 'type' using bubble sort
 	sort: function(type) {
@@ -213,9 +249,8 @@ function process_chart(process) {
 	var arrival_time = parseInt(process.arrival_time);
 	var burst_time = parseInt(process.burst_time);
 
-	return '<li class="title" title="">'+name+' '+ execution_time +
-	' : '+(burst_time+execution_time)+'</li><li class="current" title="'+burst_time+'"><span class="bar" data-number="'+burst_time+
-	'"></span><span class="number"></span></li>';
+	return '<li class="title" title="">'+name+'</li><li class="current" title="'+execution_time+'"><span class="bar" data-number="'+burst_time+
+	'"></span><span class="number">'+(burst_time+execution_time)+'</span></li>';
 }
 
 function build_chart(process_list) {
@@ -282,6 +317,7 @@ function preemptive(process_list, scheduler_type) {
 		process_list.sort('burst_time');
 	else
 		process_list.sort('priority');
+
 
 	var current_time = 0;
 	var current_process = process_list.head;

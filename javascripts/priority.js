@@ -27,10 +27,23 @@ function priority() {
 		  process_list.add(current_process);
 	});
 	
+	var list, arr;
+
 	//get the selected radio_btn value
 	var option_val = $(".options input[type='radio']:checked").val();
-	if(option_val == 'preemptive')
-		build_chart(preemptive(process_list, 'priority'));
-	else
-		build_chart(non_preemptive(process_list, 'priority'));
+	if(option_val == 'preemptive'){
+		list = preemptive(process_list, 'priority'); 
+		arr = list.avg_turn_around_and_wating_time();
+		build_chart(list);
+		$('.avarage-time').html(arr[0]);
+		$('.turn-around-time').html(arr[1]);
+	}
+	else{
+		list = non_preemptive(process_list, 'priority'); 
+		arr = list.avg_turn_around_and_wating_time();
+		build_chart(list);
+		$('.avarage-time').html(arr[0]);
+		$('.turn-around-time').html(arr[1]);
+	}
+
 }

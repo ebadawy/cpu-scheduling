@@ -1,7 +1,8 @@
+console.log("here");
 function sjf() {
 	var process_list = new ProcessList();
 
-	//iterate to all process and build them in a list
+	// iterate to all process and build them in a list
 	$inputs_container.children().each(function() {
 		  var process_name = $(this).find('.form-control.process-name').val();
 		  var arival_time = parseInt($(this).find('.form-control.arrival-time').val());
@@ -15,11 +16,23 @@ function sjf() {
 		  process_list.add(current_process);
 	});
 
+	var list, arr;
+
 	//get the selected radio_btn value
 	var option_val = $(".options input[type='radio']:checked").val();
-	if(option_val == 'preemptive')
-		build_chart(preemptive(process_list, 'sjf'));
-	else
-		build_chart(non_preemptive(process_list, 'sjf'));
+	if(option_val == 'preemptive'){
+		list = preemptive(process_list, 'sjf'); 
+		arr = list.avg_turn_around_and_wating_time();
+		build_chart(list);
+		$('.avarage-time').html(arr[0]);
+		$('.turn-around-time').html(arr[1]);
+	}
+	else{
+		list = non_preemptive(process_list, 'sjf'); 
+		arr = list.avg_turn_around_and_wating_time();
+		build_chart(list);
+		$('.avarage-time').html(arr[0]);
+		$('.turn-around-time').html(arr[1]);
+	}
 
 }

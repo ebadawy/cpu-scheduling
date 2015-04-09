@@ -13,6 +13,10 @@ function fcfs() {
 		
 	//sort process according to there arival time & build the chart
 	process_list.sort('arival_time');
-	build_chart(process_list);
+	var arr = process_list.avg_turn_around_and_wating_time();
 
+	$('.avarage-time').html(arr[0]);
+	$('.turn-around-time').html(arr[1]);
+	build_chart(process_list);
+	// $('.avarage-time').html(process_list.get_average_time());
 }

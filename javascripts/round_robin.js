@@ -67,6 +67,13 @@ function round_robin() {
 		} else 
 			current_time += 1;
 	}
+	ready_list = ready_list.merge();
+	var arr = ready_list.avg_turn_around_and_wating_time();
+
+	$('.avarage-time').html(arr[0]);
+	$('.turn-around-time').html(arr[1]);
 
 	build_chart(ready_list.merge());
+	// $('.avarage-time').html(process_list.get_average_time());
+
 }
